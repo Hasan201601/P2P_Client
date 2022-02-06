@@ -2,6 +2,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select, TextField, Typograph
 import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 import useAuthentication from '../../Hooks/useAuthentication';
 
 const useStyles = makeStyles({
@@ -44,7 +45,7 @@ const Login = () => {
         setPassword(event.target.value);
     };
 
-    const { loginUser } = useAuthentication()
+    const { loginUser } = useAuth()
 
     const handleLogin = e => {
         e.preventDefault()

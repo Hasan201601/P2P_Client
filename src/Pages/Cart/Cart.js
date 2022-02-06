@@ -6,15 +6,17 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useHistory } from 'react-router-dom';
+import useAuthentication from "../../Hooks/useAuthentication"
+import useAuth from '../../Hooks/useAuth';
 
 
 
 const Cart = () => {
     const history = useHistory()
     const amount = 39
+    const { user } = useAuth();
     const handleCheckout = (amount) => {
-        const user = false;
-        if (!user) {
+        if (!user.username) {
             history.push("/dashboard/login")
         }
     }

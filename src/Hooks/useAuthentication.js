@@ -33,7 +33,7 @@ const useAuthentication = () => {
             .catch(err => setAuthError(err))
             .finally(setIsLoading(false))
     }
-    return { RegisterUser, loginUser }
+    return { RegisterUser, loginUser, user }
 
 }
 
