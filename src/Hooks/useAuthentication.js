@@ -31,17 +31,21 @@ const useAuthentication = () => {
         })
             .then(res => {
                 setUser(res.data)
+
                 /* const token = res.data.accessToken
                 localStorage.setItem("user", token) */
             })
             .catch(err => setAuthError(err))
             .finally(setIsLoading(false))
     }
+    const LogOut = () => {
+        setUser({})
+    }
     /* const getUser = () => {
         const token = JSON.parse(localStorage.getItem("user"))
         console.log(token)
     } */
-    return { RegisterUser, loginUser, user }
+    return { RegisterUser, loginUser, user, LogOut }
 
 }
 

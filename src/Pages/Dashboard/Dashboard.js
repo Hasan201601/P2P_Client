@@ -9,6 +9,7 @@ import Contents from './Contents';
 const drawerWidth = 240;
 
 function Dashboard(props) {
+
     const { window } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
     console.log(mobileOpen)
