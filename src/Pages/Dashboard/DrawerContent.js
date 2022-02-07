@@ -20,7 +20,6 @@ const useStyles = makeStyles({
 const DrawerContent = () => {
     const classes = useStyles()
     let { url } = useRouteMatch();
-    console.log(url)
     return (
         <div>
 
@@ -41,6 +40,12 @@ const DrawerContent = () => {
                 <Link className={classes.link} to={`${url}/register`}>
                     <ListItem button >
                         Register
+                    </ListItem>
+                </Link>
+                <Divider />
+                <Link className={classes.link} to={`${url}/payment`}>
+                    <ListItem button >
+                        Payment
                     </ListItem>
                 </Link>
                 <Divider />

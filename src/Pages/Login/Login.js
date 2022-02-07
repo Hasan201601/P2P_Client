@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import useAuthentication from '../../Hooks/useAuthentication';
+import { useJwt } from "react-jwt"
 
 const useStyles = makeStyles({
     link: {
@@ -51,6 +52,8 @@ const Login = () => {
         e.preventDefault()
         loginUser(email, password)
     }
+    /* const { decodedToken, isExpired } = useJwt(localStorage.getItem("user"))
+    console.log({ decodedToken, isExpired }) */
 
     return (
         <>
@@ -73,6 +76,7 @@ const Login = () => {
                 </FormControl>
                 <Button className={classes.formButton} type="submit" variant="contained"> login</Button>
                 <Typography className={classes.formText}>Don't have an account? <Link className={classes.link} to="/dashboard/register">Sign Up</Link></Typography>
+
 
             </form>
         </>

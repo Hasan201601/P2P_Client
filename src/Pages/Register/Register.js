@@ -2,6 +2,7 @@ import { Button, FormControl, TextField, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 import useAuthentication from '../../Hooks/useAuthentication';
 
 const useStyles = makeStyles({
@@ -51,7 +52,7 @@ const Register = () => {
     const handleChange = (event) => {
         setRole(event.target.value);
     };
-    const { RegisterUser } = useAuthentication()
+    const { RegisterUser } = useAuth()
 
     const handleRegister = e => {
         e.preventDefault()
