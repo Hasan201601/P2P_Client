@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login';
 import NotFound from './Pages/NotFound/NotFound';
 import Home from './Pages/Home/Home';
 import AuthProvider from './Context/AuthProvider';
+import Payment from './Pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/dashboard">
             <Dashboard></Dashboard>
+          </Route>
+          <Route path="/payment">
+            <Payment></Payment>
           </Route>
           <Route path="*">
             <NotFound></NotFound>
