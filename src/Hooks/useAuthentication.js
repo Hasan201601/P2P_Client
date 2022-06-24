@@ -29,11 +29,23 @@ const useAuthentication = () => {
             email: email,
             password: password
         })
-            .then(res => setUser(res.data))
+            .then(res => {
+                setUser(res.data)
+
+                /* const token = res.data.accessToken
+                localStorage.setItem("user", token) */
+            })
             .catch(err => setAuthError(err))
             .finally(setIsLoading(false))
     }
-    return { RegisterUser, loginUser, user }
+    const LogOut = () => {
+        setUser({})
+    }
+    /* const getUser = () => {
+        const token = JSON.parse(localStorage.getItem("user"))
+        console.log(token)
+    } */
+    return { RegisterUser, loginUser, user, LogOut }
 
 }
 

@@ -1,9 +1,10 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
-import useAuthentication from '../../Hooks/useAuthentication';
 
 const useStyles = makeStyles({
     link: {
@@ -37,6 +38,9 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     console.log({ email, password })
+    const location = useLocation();
+    const history = useHistory();
+    const destination = location?.state?.from || "/dashboard";
 
     const handleEmail = (event) => {
         setEmail(event.target.value);
@@ -46,11 +50,13 @@ const Login = () => {
     };
 
     const { loginUser } = useAuth()
-
     const handleLogin = e => {
         e.preventDefault()
         loginUser(email, password)
+        history.push(destination)
     }
+    /* const { decodedToken, isExpired } = useJwt(localStorage.getItem("user"))
+    console.log({ decodedToken, isExpired }) */
 
     return (
         <>
@@ -73,6 +79,7 @@ const Login = () => {
                 </FormControl>
                 <Button className={classes.formButton} type="submit" variant="contained"> login</Button>
                 <Typography className={classes.formText}>Don't have an account? <Link className={classes.link} to="/dashboard/register">Sign Up</Link></Typography>
+
 
             </form>
         </>

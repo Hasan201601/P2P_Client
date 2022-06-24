@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,8 +9,10 @@ import Contents from './Contents';
 const drawerWidth = 240;
 
 function Dashboard(props) {
+
     const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    console.log(mobileOpen)
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -20,7 +22,10 @@ function Dashboard(props) {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBarDashboard></AppBarDashboard>
+            <AppBarDashboard
+                drawerWidth={drawerWidth}
+                handleDrawerToggle={handleDrawerToggle}
+            ></AppBarDashboard>
             <Drawers
                 drawerWidth={drawerWidth}
                 container={container}

@@ -1,7 +1,10 @@
 import { Button, FormControl, TextField, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 import useAuthentication from '../../Hooks/useAuthentication';
 
 const useStyles = makeStyles({
@@ -37,6 +40,9 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    const location = useLocation();
+    const history = useHistory();
+    const destination = location?.state?.from || "/dashboard";
 
     const handleName = (event) => {
         setName(event.target.value);
@@ -51,11 +57,12 @@ const Register = () => {
     const handleChange = (event) => {
         setRole(event.target.value);
     };
-    const { RegisterUser } = useAuthentication()
+    const { RegisterUser } = useAuth()
 
     const handleRegister = e => {
         e.preventDefault()
         RegisterUser(name, email, password, role)
+        history.push(destination)
     }
     return (
         <form className={classes.form} onSubmit={handleRegister}>
